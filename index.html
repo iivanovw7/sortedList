@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Список сотрудников</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+
+
+</head>
+
+<body>
+
+<div class="container">
+  <header id="lists_header" class="header">
+    <h2>Форматируемые списки</h2>
+  </header>
+  <aside class="aside aside-1">
+    <h3>Список #1 <br> (Сотрудники) </h3>
+    <button onclick="handleRawListCall('people')">Исходный список</button>
+    <button onclick="handleSortByNumber('people', 'id')">Упорядочить по id</button>
+    <button onclick="handleSortByString('people', 'name')">Форматировать по имени</button>
+    <button onclick="handleSortByString('people', 'family_name')">Форматировать по фамилии</button>
+  </aside>
+  <aside class="aside aside-2">
+    <h3>Список #2 <br> (Задачи) </h3>
+    <button onclick="handleRawListCall('projects')">Исходный список</button>
+    <button onclick="handleSortByNumber('projects', 'id')">Упорядочить по id</button>
+    <button onclick="handleSortProjectsByString('projects', 'title')">Форматировать по названию</button>
+    <button onclick="handleSortByNumber('projects', 'budget')">Упорядочить по бюджету</button>
+    <button onclick="handleSortByDate('projects', 'date')">Форматировать по дате </button>
+  </aside>
+  <div class="main">
+    <table class="list">
+      <tr>
+        <th>Не выбран ни один из списков</th>
+      </tr>
+    </table>
+  </div>
+  <footer class="footer">
+    <div class="checkbox_container hidden">
+      <label>
+        <input id="idList" type="checkbox" name="idList" checked/>
+        Показать id
+      </label>
+    </div>
+    <div class="sum"></div>
+  </footer>
+</div>
+
+<div class="specification">
+  <h2>Спецификация визуального компонента "Список"</h2>
+  <ul>
+    <li>
+      <h3>Введение</h3>
+      <ul>
+        <li>
+          <strong>Назначение</strong>
+          <br>
+          <ul class="properties">
+            <li>
+              Компонент применяется для наглядного отображения и редактирования связанных списков, осуществляет вывод на экран данных в виде списков,
+              с возможностью сортировки.
+              Список используется для упрощения анализа и поиска элементов, а так же для редактирования необходимых значений.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>Область действия</strong>
+          <br>
+          <ul class="properties">
+            <li>
+              Элемент предназначен для работы через браузер ПК. <br>
+              См. поддерживаемые версии браузеров в <strong>Приложении 1.</strong>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>Краткий обзор</strong>
+          <br>
+          <ul class="properties">
+            <li>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <h3>Общее описание</h3>
+      <ul>
+        <li>
+          <strong>Взаимодействие продукта (с другими продуктами и компонентами)</strong>
+          <br>
+          <ul class="properties">
+            <li>
+              Загрузка списков в определенном формате (см. <strong>Приложение 2</strong>) происходит после зарпроса на сервер.
+            </li>
+            <li>
+              Редактирование элементов списка происходит при помощи взаимодействия с сервером. После подтверждения отправки формы, содержащей новое значение,
+              формируется запрос к серверу на изменние данных,
+              далее пользователь получает оповещение об успешном/не успешном изменении и происходит загрузка нового представления списка.
+            </li>
+            <li>
+              Режим поиска позволяет ввести требуемое значение, далее после отправки формы, элемент выводит на главый экран результаты поиска с виде нумерованого списка.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>Функции продукта (краткое описание)</strong>
+          <br>
+          <ul class="properties">
+            <li>
+              Компонент "Список" так же поддерживает наличие внутрених связей между разными списками, возможность загрузки данных из разных списков в список, открытый в текущий момент.
+              Поиск элементов осуществляется по уникальному индентификатору (id), присваемому каждому из элементов, при создании.
+            </li>
+            <li>
+              Предусмотрена возможность изменения значения ячеек, как на экране отображения списка, так и на экране вывода результатов поиска по знаяению.
+            </li>
+            <li>
+              Компонент имеет возможность поиска по значению ячейки и возможность сортировки резльтатов поиска.
+            </li>
+          </ul>
+          <strong>Характеристики пользователя</strong>
+          <br>
+          <ul class="properties">
+          </ul>
+          <strong>Ограничения</strong>
+          <br>
+          <ul class="properties">
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <h3>Описание внешних интерфейсов</h3>
+      <ul>
+        <li>
+          <strong>Интерфейсы пользователя</strong>
+          <br>
+          <ul class="properties">
+            <li>Список поддерживает настройку графического интерфейса пользователя через панели управления в правой, левой и нижней частях экрана.</li>
+            <li>Возможность скрывать и отображать столбцы списков реализована в нижней части экрана</li>
+            <li>Настройки сортировок и параметров отображения базовых списков расположена в левой чати экрана</li>
+            <li>Настройки сортировок и параметров отображения основных списков расположена в правой чати экрана</li>
+            <li>На заголовке списка, на каждом из столбцов есть кнопка изменения сортировки: "По возрастанию", "По убыванию"</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Интерфейсы взаимодействия</strong>
+          <br>
+          <ul class="properties">
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <h3>Примеры реализации и использования</h3>
+      <ul>
+        <li>
+          <strong>Список задач и вложенный список назначенных сотрудников</strong>
+          <br>
+          <ul class="properties">
+            <li>
+              На правой панели управления осуществляется форматирование списка задач, который содержит список id назначенных сотрудников,
+              колонка "Назначен" заполняется элементами из списка "Сотрудники" в соответсвии с идентификатором.
+              Список поддерживает сортировку по всем колонкам (по возрастанию, по убыванию) по датам, бюджету, названию проекта, по id.
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <hr>
+  <h3>Приложение 1</h3>
+  <h4>Поддерживаемые браузеры</h4>
+  <table class="browsers">
+    <tr>
+      <th></th>
+      <th>Chrome</th>
+      <th>Firefox</th>
+      <th>Opera</th>
+      <th>Safari</th>
+      <th>Internet Explorer</th>
+      <th>Microsoft Edge</th>
+    </tr>
+    <tr>
+      <th>Windows</th>
+      <td>35</td>
+      <td>38</td>
+      <td>18</td>
+      <td>Не поддерживается</td>
+      <td>11</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>Linux</th>
+      <td>35</td>
+      <td>38</td>
+      <td>18</td>
+      <td>не существует</td>
+      <td>не существует</td>
+      <td>не существует</td>
+    </tr>
+    <tr>
+      <th>Mac OS</th>
+      <td>35</td>
+      <td>38</td>
+      <td>18</td>
+      <td>8</td>
+      <td>не существует</td>
+      <td>не существует</td>
+    </tr>
+  </table>
+  <br>
+  <hr>
+  <h3>Приложение 2</h3>
+  <h4>Примеры списков</h4>
+  <code class="pre">
+    const lists = { people : [], projects: [], headerData: {}}; //пример структуры, 2 списка и объект содержащий заголовки списков
+  </code>
+  <code class="pre">
+    {people : [{id: 122, name: 'Игнат', family_name: 'Делюгин'}]} //пример списка, список сотрудников
+  </code>
+  <code class="pre">
+    {projects : [{id: 124, title: 'Project 1', date: '01.24.2007', budget: 10000, assignee: 2}]} //пример списка 2, список задач
+  </code>
+  <code class="pre">
+    headerData: {id: 'id', assignee: 'Назначен', budget: 'Бюджет', date: 'Дата создания', title: 'Задача'} //пример заголовков списка задач
+  </code>
+</div>
+
+<script src="js/index.js"></script>
+<script>
+
+  //showing and hiding id column
+  document.getElementById('idList').onclick = function() {
+    (this.checked ? showByClassName('.id') : hideByClassName('.id'));
+  }
+
+</script>
+
+</body>
+</html>
+
+
+

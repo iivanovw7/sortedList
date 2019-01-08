@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html {
+    font-family: 'Roboto', sans-serif;
+    background-color: ghostwhite;
+
+}
+
+body {
+    padding: 1%;
+    overflow: scroll;
+}
+
+button {
+    width: 100%;
+}
+
+.list_header, .list_element_wrapper {
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    justify-content: flex-start;
+}
+
+.list_complex_header {
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    justify-content: flex-start;
+    background-color: lightgray;
+    align-items: center;
+    height: 30px !important;
+    margin-bottom: 10px;
+    opacity: 1;
+}
+
+.list_header {
+    top: 0;
+    background-color: lightgray;
+    align-items: center;
+    height: 30px !important;
+    margin-bottom: 10px;
+    opacity: 1;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+}
+
+.id {
+    width: 30px;
+    text-align: right;
+}
+
+.highlighted {
+    font-weight: bold;
+}
+
+.id, .name, .family_name {
+   margin-right: 10px
+}
+
+.specification ul {
+    list-style: none
+}
+
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    font-weight: normal;
+    text-align: center;
+    border: solid 1px lightgray;
+    border-radius: 5px;
+}
+
+.container > * {
+    padding: 10px;
+    flex: 1 100%;
+}
+
+.header {
+    background: gray;
+}
+
+.hidden {
+    display: none
+}
+
+.shown {
+    display: block
+}
+
+.shown_flex {
+    display: flex
+}
+
+.main {
+    text-align: left;
+    height: 300px;
+    overflow-y: scroll;
+    padding-top: 0
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+footer div {
+    margin-right: 20px;
+}
+
+p {
+    text-indent: 20px;
+}
+
+.properties {
+    margin: 10px;
+}
+
+code {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}
+
+.properties li {
+    margin: 10px;
+}
+
+.browsers tr, .browsers td  {
+    border: 1px solid gray;
+    text-align: center;
+}
+
+.main div {
+    height: 35px;
+}
+
+.main table {
+    width: 100%;
+}
+
+th, td {
+    width: 160px;
+}
+
+.aside-1 {
+
+}
+
+.aside-2 {
+
+}
+
+@media all and (min-width: 600px) {
+    .aside { flex: 1 0 0; }
+}
+
+@media all and (min-width: 800px) {
+    .main    { flex: 3 0px; }
+    .aside-1 { order: 1; }
+    .main    { order: 2; }
+    .aside-2 { order: 3; }
+    .footer  { order: 4; }
+}
+
