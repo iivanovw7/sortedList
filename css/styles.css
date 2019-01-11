@@ -44,6 +44,11 @@ button {
     opacity: 1;
 }
 
+label {
+    display: flex;
+    align-items: center;
+}
+
 .sticky {
     position: -webkit-sticky;
     position: sticky;
@@ -78,6 +83,10 @@ button {
 .container > * {
     padding: 10px;
     flex: 1 100%;
+}
+
+.sum {
+    align-self: center;
 }
 
 .header {
@@ -156,7 +165,7 @@ code {
 }
 
 th, td {
-    width: 160px;
+    width: 185px;
 }
 
 .aside-1 {

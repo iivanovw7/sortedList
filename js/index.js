@@ -21,26 +21,26 @@ const lists = {
     {id: 19, name: 'Александр', family_name: 'Петров'}
   ],
   projects: [
-    {id: 124, title: 'Project 1', date: '01.24.2007', budget: 10000, assignee: 2},
-    {id: 2, title: 'Project 21', date: '03.12.2003', budget: 20000, assignee: 3},
-    {id: 3, title: 'Project 31', date: '03.12.2014', budget: 1000, assignee: 4},
-    {id: 42, title: 'Project 4', date: '03.01.1996', budget: 20020, assignee: 5},
-    {id: 10, title: 'Project 5', date: '03.12.2004', budget: 30000, assignee: 7},
-    {id: 6, title: 'Project 61', date: '03.03.2012', budget: 33000, assignee: 8},
-    {id: 7, title: 'Project 71', date: '04.09.2013', budget: 15000, assignee: 9},
-    {id: 1, title: 'Project 81', date: '03.23.2014', budget: 17000, assignee: 10},
-    {id: 9, title: 'Project 21', date: '03.12.2003', budget: 22000, assignee: 11},
-    {id: 123, title: 'Project 31', date: '03.24.2014', budget: 27000, assignee: 13},
-    {id: 11, title: 'Project 42', date: '03.01.1996', budget: 5000, assignee: 14},
-    {id: 12, title: 'Project 52', date: '03.12.2004', budget: 5800, assignee: 15},
-    {id: 13, title: 'Project 62', date: '03.03.2012', budget: 1200, assignee: 11},
-    {id: 14, title: 'Project 72', date: '05.09.2013', budget: 1500, assignee: 121},
-    {id: 15, title: 'Project 82', date: '12.21.2014', budget: 1700, assignee: 19},
-    {id: 146, title: 'Project 22', date: '03.14.2003', budget: 19000, assignee: 15},
-    {id: 17, title: 'Project 33', date: '03.22.2014', budget: 22000, assignee: 112},
-    {id: 14, title: 'Project 43', date: '03.01.1996', budget: 30300, assignee: 122},
-    {id: 19, title: 'Project 53', date: '03.12.2004', budget: 60700, assignee: 10},
-    {id: 22, title: 'Project 63', date: '05.03.2012', budget: 80800, assignee: 4}
+    {id: 124, title: 'Project 1', date: '2011-02-21', budget: 10000, assignee: 2},
+    {id: 2, title: 'Project 21', date: '2003-03-12', budget: 20000, assignee: 3},
+    {id: 3, title: 'Project 31', date: '2014-12-03', budget: 1000, assignee: 4},
+    {id: 42, title: 'Project 4', date: '1996-02-01', budget: 20020, assignee: 5},
+    {id: 10, title: 'Project 5', date: '2004-12-03', budget: 30000, assignee: 7},
+    {id: 6, title: 'Project 61', date: '2012-03-03', budget: 33000, assignee: 8},
+    {id: 7, title: 'Project 71', date: '2013-04-09', budget: 15000, assignee: 9},
+    {id: 1, title: 'Project 81', date: '2014-03-23', budget: 17000, assignee: 10},
+    {id: 9, title: 'Project 21', date: '2003-12-03', budget: 22000, assignee: 11},
+    {id: 123, title: 'Project 31', date: '2014-03-24', budget: 27000, assignee: 13},
+    {id: 11, title: 'Project 42', date: '1996-03-01', budget: 5000, assignee: 14},
+    {id: 12, title: 'Project 52', date: '2004-03-12', budget: 5800, assignee: 15},
+    {id: 13, title: 'Project 62', date: '2012-03-03', budget: 1200, assignee: 11},
+    {id: 14, title: 'Project 72', date: '2013-05-09', budget: 1500, assignee: 121},
+    {id: 15, title: 'Project 82', date: '2014-12-21', budget: 1700, assignee: 19},
+    {id: 146, title: 'Project 22', date: '2003-03-14', budget: 19000, assignee: 15},
+    {id: 17, title: 'Project 33', date: '2014-03-22', budget: 22000, assignee: 112},
+    {id: 14, title: 'Project 43', date: '1996-03-01', budget: 30300, assignee: 122},
+    {id: 19, title: 'Project 53', date: '2004-12-03', budget: 60700, assignee: 10},
+    {id: 22, title: 'Project 63', date: '2012-05-03', budget: 80800, assignee: 4}
   ],
   headerData: {
     id: 'id', assignee: 'Назначен', budget: 'Бюджет', date: 'Дата создания', title: 'Задача'
@@ -250,10 +250,13 @@ function sortBy(list, key) {
 function sortByDate(list) {
 
   var arr = list.slice();
+  console.log('sorting')
 
   arr.sort(function (a, b) {
+    console.log(new Date(a.date));
     return new Date(a.date + 'Z') - new Date(b.date + 'Z');
   });
+
 
   return arr
 
