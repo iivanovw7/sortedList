@@ -250,11 +250,11 @@ function sortBy(list, key) {
 function sortByDate(list) {
 
   var arr = list.slice();
-  console.log('sorting')
+  //console.log('sorting')
 
   arr.sort(function (a, b) {
-    console.log(new Date(a.date));
-    return new Date(a.date + 'Z') - new Date(b.date + 'Z');
+    //console.log(new Date(a.date));
+    return new Date(a.date) - new Date(b.date);
   });
 
 
